@@ -19,7 +19,8 @@
 	"main": "./index",
 	"activationEvents": [
 		"*",
-		"onCommand:lafcloud.lafLogin"
+		"onCommand:lafcloud.lafLogin",
+		"onCommand:lafcloud.bindCloud"
 	],
 	"contributes": {
 		"activationEvents": [],
@@ -37,7 +38,7 @@
 			"explorer/context": [{
 					"command": "lafcloud.lafLogin",
 					"group": "_top",
-					"when": "explorerResourceCount == 1 && workspaceFolderRelativePath =~ /lafcloud/$ && explorerResourceIsFolder"
+					"when": "explorerResourceCount == 1 && explorerResourceIsFolder && workspaceFolderRelativePath =~ /^lafcloud$/"
 				},
 				{
 					"command": "lafcloud.bindCloud",
