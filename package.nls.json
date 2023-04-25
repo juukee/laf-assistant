@@ -1,0 +1,7 @@
+{
+	"description": "laf云开发本地化开发插件，结合Git使用更佳！",
+	"keywords": "laf的uni版插件",
+	"displayName": "laf-assistant",
+	"lafLogin.command.name": "云服务空间登录",
+	"bindCloud.command.name": "绑定云服务空间或项目"
+}

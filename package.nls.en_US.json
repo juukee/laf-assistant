@@ -1,0 +1,7 @@
+{
+	"description": "LAF Cloud Development Localized Development Plugin, Better to Use in Combination with Git!",
+	"keywords": "uni plugins for laf",
+	"displayName": "laf-assistant",
+	"lafLogin.command.name": "LAF:login",
+	"bindCloud.command.name": "bind cloud"
+}

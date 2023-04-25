@@ -1,0 +1,124 @@
+{
+	"id": "laf-assistant",
+	"name": "laf-assistant",
+	"keywords": [
+		"laf",
+		"laf-cli",
+		"uni插件"
+	],
+	"description": "%description%",
+	"displayName": "%displayName%",
+	"version": "1.0.0-2023041902",
+	"publisher": "juukee",
+	"engines": {
+		"HBuilderX": "^2.7.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"main": "./index",
+	"activationEvents": [
+		"*",
+		"onCommand:lafcloud.lafLogin"
+	],
+	"contributes": {
+		"activationEvents": [],
+		"extensionDependencies": [],
+		"commands": [{
+				"command": "lafcloud.lafLogin",
+				"title": "%lafLogin.command.name%"
+			},
+			{
+				"command": "lafcloud.bindCloud",
+				"title": "%bindCloud.command.name%"
+			}
+		],
+		"menus": {
+			"explorer/context": [{
+					"command": "lafcloud.lafLogin",
+					"group": "_top",
+					"when": "explorerResourceCount == 1 && workspaceFolderRelativePath =~ /lafcloud/$ && explorerResourceIsFolder"
+				},
+				{
+					"command": "lafcloud.bindCloud",
+					"group": "_top",
+					"when": "explorerResourceCount == 1 && explorerResourceIsFolder && workspaceFolderRelativePath =~ /^lafcloud$/"
+				}
+			]
+		}
+	},
+	"extensionDependencies": [
+		"plugin-manager",
+		"uni_modules"
+	],
+	"launchers": [{
+			"type": "unicloud.launcher.runLocalCloudObject",
+			"launcherId": "runOrDebugLocalCloudObject.${uniCloudFnPath}",
+			"label": "%launcher.runLocalCloudObject.name%",
+			"terminateLabel": "%launcher.stopRunLocalCloudObject.name%",
+			"when": "(explorerResourceCount == 1 && expression.cfcd && expression.hasCloudObjectEnter) || (expression.cfof && expression.hasCloudObjectEnter)",
+			"mode": "run",
+			"priority": 100
+		},
+		{
+			"type": "unicloud.launcher.debugLocalCloudObject",
+			"launcherId": "runOrDebugLocalCloudObject.${uniCloudFnPath}",
+			"label": "%launcher.debugLocalCloudObject.name%",
+			"terminateLabel": "%launcher.stopDebugLocalCloudObject.name%",
+			"when": "(explorerResourceCount == 1 && expression.cfcd && expression.hasCloudObjectEnter) || (expression.cfof && expression.hasCloudObjectEnter)",
+			"mode": "debug",
+			"priority": 99
+		},
+		{
+			"type": "unicloud.launcher.runLocalCloudFunction",
+			"launcherId": "runOrDebugLocalCloudFunction.${uniCloudFnPath}",
+			"label": "%launcher.runLocalCloudFunction.name%",
+			"terminateLabel": "%launcher.stopRunLocalCloudFunction.name%",
+			"when": "(explorerResourceCount == 1 && expression.cfcd && expression.hasCloudFunctionEnter) || (expression.cfof && expression.hasCloudFunctionEnter)",
+			"mode": "run",
+			"priority": 98
+		},
+		{
+			"type": "unicloud.launcher.debugLocalCloudFunction",
+			"launcherId": "runOrDebugLocalCloudFunction.${uniCloudFnPath}",
+			"label": "%launcher.debugLocalCloudFunction.name%",
+			"terminateLabel": "%launcher.stopDebugLocalCloudFunction.name%",
+			"when": "(explorerResourceCount == 1 && expression.cfcd && expression.hasCloudFunctionEnter) || (expression.cfof && expression.hasCloudFunctionEnter)",
+			"mode": "debug",
+			"priority": 97
+		},
+		{
+			"type": "unicloud.launcher.uploadAndExecFunction",
+			"launcherId": "uploadAndExecFunction.${uniCloudFnPath}",
+			"label": "%launcher.uploadAndExecFunction.name% - [${cloudFunctionName}](&T)",
+			"terminateLabel": "%launcher.uploadAndExecFunction.name% - [${cloudFunctionName}](&T)",
+			"when": "(explorerResourceCount == 1 && expression.cfcd && expression.hasCloudFunctionEnter) || (expression.cfof && expression.hasCloudFunctionEnter)",
+			"mode": "run",
+			"priority": 96
+		},
+		{
+			"type": "unicloud.launcher.uploadAndExecObject",
+			"launcherId": "uploadAndExecObject.${uniCloudFnPath}",
+			"label": "%launcher.uploadAndExecObject.name% - [${cloudFunctionName}](&T)",
+			"terminateLabel": "%launcher.uploadAndExecObject.name% - [${cloudFunctionName}](&T)",
+			"when": "(explorerResourceCount == 1 && expression.cfcd && expression.hasCloudObjectEnter) || (expression.cfof && expression.hasCloudObjectEnter)",
+			"mode": "run",
+			"priority": 95
+		},
+		{
+			"type": "unicloud.launcher.configureRunTestParam",
+			"launcherId": "configureRunTestParam.${uniCloudFnPath}",
+			"label": "%launcher.configureRunTestParam.name%",
+			"terminateLabel": "%launcher.configureRunTestParam.name%",
+			"when": "(explorerResourceCount == 1 && expression.cfcd && expression.hasFunctionOrObjectEnter) || (expression.cfof && expression.hasFunctionOrObjectEnter)",
+			"mode": "run",
+			"priority": 94
+		}
+	],
+	"dependencies": {
+		"@lafjs/cloud": "^1.0.0-beta.4",
+		"chokidar": "3.5.3",
+		"hjson": "3.2.1",
+		"urllib": "2.36.1"
+	}
+}
